@@ -1,0 +1,60 @@
+<!doctype html>
+<html ng-app="myApp" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+  body {
+    background-color: black;
+  }
+  img {
+    height: 250px;
+    width: 300px;
+    float: left;
+    display: block;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script >
+    
+  </script>
+</head>
+<body ng-controller ="myCtrl">
+<form>
+    <input ng-model="name.search" type="text" id="tag" placeholder="Type in any tags">
+    <button ng-click="searched()">Search</button>
+</form>
+<div id="images"></div>
+ 
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.name = {search : "cat"};
+    $scope.searched = function() {
+      $('#images').empty(); 
+
+  var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+  $.getJSON( flickerAPI, {
+    tags: $scope.name.search ,
+    tagmode: "any",
+    format: "json"
+  })
+    .done(function( data ) {
+      $.each( data.items, function( i, item ) {
+        $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+        if ( i === 7 ) {
+          return false;
+        }
+      });
+    });
+}
+});
+
+</script>
+ 
+</body>
+</html>

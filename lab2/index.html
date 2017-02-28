@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css-reset.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+</head>
+<body>
+	<header>
+		<h4>Viewport basics</h4>
+	</header>
+	<br><br>
+	<h1>Using the viewport meta tag to control layout on mobile browsers</h1>
+	
+	<h6>Published:2016-06-26</h6>
+	<br>
+	<p>
+		Mobile browsers like Fennec render pages in a virtual "window" (the viewport), usually wider than the screen, so they don't need to squeeze every page layout into a tiny window (which would break many non-mobile-optimized sites). Users can pan and zoom to see different areas of the page.
+
+		Mobile Safari introduced the "viewport meta tag" to let web developers control the viewport's size and scale. Many other mobile browsers now support this tag, although it is not part of any web standard. Apple's documentation does a good job explaining how web developers can use this tag, but we had to do some detective work to figure out exactly how to implement it in Fennec. For example, Safari's documentation says the content is a "comma-delimited list," but existing browsers and web pages use any mix of commas, semicolons, and spaces as separators.
+
+		Learn more about viewports in different mobile browsers in A Tale of Two Viewports at quirksmode.org.
+	</p><br><br>
+	
+	<h1>Basic rules are simple, don't use pixels</h1>
+	
+	<h6>Published:2016-06-26</h6>
+
+	<br>
+	<p>
+		The iPhone and many popular Android phones have 3- to 4-inch (7–10 cm) screens with 320—480 pixels (~160 dpi). Firefox for Maemo runs on the Nokia N900, which has the same physical size but 480—800 pixels (~240 dpi). Because of this, the last version of Fennec displayed many pages about one third smaller (in actual, physical size) than iPhone or Android. This caused usability and readability problems on many touch-optimized web sites. Peter-Paul Koch wrote about this problem in A pixel is not a pixel.
+
+		Fennec 1.1 for Maemo will use 1.5 hardware pixels for each CSS "pixel," following the lead of Android's WebKit-based browser. This means a page with initial-scale=1 will render at close to the same physical size in Fennec for Maemo, Mobile Safari for iPhone, and the Android Browser on both HDPI and MDPI phones. This is consistent with the CSS 2.1 specification, which says
+	</p>
+	<br><br>
+	<h1>Everything must be scalable</h1>
+	
+	<h6>Published:2016-06-26</h6>
+	<br>
+	<p>
+		The iPhone and many popular Android phones have 3- to 4-inch (7–10 cm) screens with 320—480 pixels (~160 dpi). Firefox for Maemo runs on the Nokia N900, which has the same physical size but 480—800 pixels (~240 dpi). Because of this, the last version of Fennec displayed many pages about one third smaller (in actual, physical size) than iPhone or Android. This caused usability and readability problems on many touch-optimized web sites. Peter-Paul Koch wrote about this problem in A pixel is not a pixel.
+
+		Fennec 1.1 for Maemo will use 1.5 hardware pixels for each CSS "pixel," following the lead of Android's WebKit-based browser. This means a page with initial-scale=1 will render at close to the same physical size in Fennec for Maemo, Mobile Safari for iPhone, and the Android Browser on both HDPI and MDPI phones. This is consistent with the CSS 2.1 specification, which says
+	</p>
+</body>
+</html>

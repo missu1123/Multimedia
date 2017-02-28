@@ -1,0 +1,23 @@
+body {
+    background-color: #87CEEB;
+}
+h1 {
+	font-size: 40px;
+	text-align: center;
+    color: #FFFF00;
+    font-family: Times;
+}
+p {
+	font-size: 20px;
+	text-align: center;
+    color: #FF0000;
+    font-family: Times;
+}
+img{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+button{
+
+}	

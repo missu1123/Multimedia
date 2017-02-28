@@ -1,59 +1,74 @@
 <!doctype html>
-<html ng-app="myApp" lang="en">
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <title>jQuery.getJSON demo</title>
   <style>
-  body {
+  body{
     background-color: black;
+    text-align: center;
   }
   img {
-    height: 250px;
-    width: 300px;
-    float: left;
-    display: block;
-    margin-top: 20px;
-    margin-left: 20px;
+    
+    width: 23em;
+    height: 23em;
+    position: relative;
+    margin: 0.2em;
+    background-color: #666;
+    border: 2px solid black;
+    overflow: hidden;
   }
   </style>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-  <script >
-    
-  </script>
 </head>
-<body ng-controller ="myCtrl">
-<form>
-    <input ng-model="name.search" type="text" id="tag" placeholder="Type in any tags">
-    <button ng-click="searched()">Search</button>
-</form>
-<div id="images"></div>
+<body>
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+  <br>
+  <input type="text" name="tag" id="tag" class="form-inline" placeholder="Type something">
+  <button type="submit" id="btn" onclick="search()" class="btn btn-success"> Show </button>
+  <div id="images"></div>
+  </div>
+  <div class="col-sm-1"></div>
+
+</div>
  
-
 <script>
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope) {
-    $scope.name = {search : "cat"};
-    $scope.searched = function() {
-      $('#images').empty(); 
-
   var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-  $.getJSON( flickerAPI, {
-    tags: $scope.name.search ,
+  
+  
+function search() {
+  var searchterm = $('#tag').val();
+  $("#images").empty();
+ (function() {
+  $.getJSON(flickerAPI, {
+    tags: searchterm,
     tagmode: "any",
-    format: "json"
+    format: "json",
   })
     .done(function( data ) {
       $.each( data.items, function( i, item ) {
         $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-        if ( i === 7 ) {
+        if ( i === 20 ) {
           return false;
         }
       });
     });
+})();
 }
-});
-
+// while(#images.firstChild) {
+//   #images.removeChild(#images.firstchild);
+// }
 </script>
  
 </body>

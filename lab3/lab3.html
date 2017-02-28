@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<title></title>
+</head>
+<body>
+ 	<input type="button" value="play" id="playBtn" />
+    <input type="button" value="pause" id="pauseBtn" />
+    <input type="button" value="stop" id="stopBtn" />
+    <script>
+    	var source = "http://www.giorgiosardo.com/HTML5/audio/audio/sample.mp3"
+	var audio = document.createElement("audio");
+	audio.src = source;
+
+$("#playBtn").click(function () {
+    audio.play();
+});
+
+$("#pauseBtn").click(function () {
+    audio.pause();
+});
+
+$("#stopBtn").click(function () {
+    audio.pause();
+    audio.currentTime = 0;
+});
+    </script>
+</body>
+</html>
